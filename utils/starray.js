@@ -11,20 +11,27 @@ import star10 from "../day5/star10.js";
 import star11 from "../day6/star11.js";
 import star12 from "../day6/star12.js";
 import star13 from "../day7/star13.js";
+import star14 from "../day7/star14.js";
+import star15 from "../day8/star15.js";
+import star16 from "../day8/star16.js";
 
 const starray = [
-  star1,
-  star2,
-  star3,
-  star4,
-  star5,
-  star6,
-  star7,
-  star8,
-  star9,
-  star10,
-  star11,
-  star12,
+    star1,
+    star2,
+    star3,
+    star4,
+    star5,
+    star6,
+    star7,
+    star8,
+    star9,
+    star10,
+    star11,
+    star12,
+    star13,
+    star14,
+    star15,
+    star16,
 ];
 
 export default starray;

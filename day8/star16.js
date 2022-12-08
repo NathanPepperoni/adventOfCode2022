@@ -12,57 +12,55 @@ function isAnEdge(input, row, col) {
     }
 }
 
-function isVisible(input, row, col) {
+function getScenicScore(input, row, col) {
     const width = input[0].length;
     const height = input.length;
 
-    if (isAnEdge(input, row, col)) {
-        return true;
-    }
-
     const currentTreeHeight = Number.parseInt(input[row][col]);
 
-    let visibleNorth = true;
-    let visibleEast = true;
-    let visibleSouth = true;
-    let visibleWest = true;
+    let treesNorth = 0;
+    let treesEast = 0;
+    let treesSouth = 0;
+    let treesWest = 0;
 
     for (let i = row - 1; i >= 0; i--) {
+        treesNorth++;
         if (Number.parseInt(input[i][col]) >= currentTreeHeight) {
-            visibleNorth = false;
+            break;
         }
     }
     for (let i = col + 1; i < width; i++) {
+        treesEast++;
         if (Number.parseInt(input[row][i]) >= currentTreeHeight) {
-            visibleEast = false;
+            break;
         }
     }
     for (let i = row + 1; i < height; i++) {
+        treesSouth++;
         if (Number.parseInt(input[i][col]) >= currentTreeHeight) {
-            visibleSouth = false;
+            break;
         }
     }
     for (let i = col - 1; i >= 0; i--) {
+        treesWest++;
         if (Number.parseInt(input[row][i]) >= currentTreeHeight) {
-            visibleWest = false;
+            break;
         }
     }
 
-    return visibleNorth || visibleEast || visibleSouth || visibleWest;
+    return treesNorth * treesEast * treesSouth * treesWest;
 }
 
-function star15() {
+function star16() {
     const input = loadPuzzleInput(8).filter((row) => row.length > 1);
 
-    let visibleCount = 0;
+    let maxScore = 0;
     for (let row = 0; row < input.length; row++) {
         for (let col = 0; col < input[0].length; col++) {
-            if (isVisible(input, row, col)) {
-                visibleCount++;
-            }
+            maxScore = Math.max(maxScore, getScenicScore(input, row, col));
         }
     }
-    return visibleCount;
+    return maxScore;
 }
 
-export default star15;
+export default star16;
