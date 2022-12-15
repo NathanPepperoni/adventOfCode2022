@@ -83,7 +83,12 @@ const updateStarray = (star, day) => {
         `import star${star - 1} from "../day${dayForPreviousStar}/star${star - 1}.js";
 import star${star} from "../day${day}/star${star}.js";`
     );
-    newStarray = newStarray.replace(new RegExp(`star${star - 1}];`, "g"), `star${star - 1}, star${star}];`);
+    const isLongFormat = !!newStarray.match(new RegExp(`star${star - 1},`, "g"));
+    if (isLongFormat) {
+        newStarray = newStarray.replace(new RegExp(`star${star - 1},`, "g"), `star${star - 1}, star${star},`);
+    } else {
+        newStarray = newStarray.replace(new RegExp(`star${star - 1}];`, "g"), `star${star - 1}, star${star}];`);
+    }
     fs.writeFileSync(starrayPath, newStarray);
     execSync(`npx prettier --write ${starrayPath}`);
 };

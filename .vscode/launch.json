@@ -12,7 +12,7 @@
                 "<node_internals>/**"
             ],
             "program": "${workspaceFolder}\\adventOfCode.js",
-            "args": ["star28"]
+            "args": ["star30"]
         }
     ]
 }
