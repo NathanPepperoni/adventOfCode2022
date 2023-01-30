@@ -1,37 +1,5 @@
 import loadPuzzleInput from "../utils/loadPuzzleInput.js";
 
-// function getFileSize(fileLine) {
-//     return Number.parseInt(fileLine.replace(")", "").split("=")[1]);
-// }
-
-// function calculateDirSizes(fileInfo) {
-//     const bundleSizes = [];
-//     for (let i = 0; i < fileInfo.length; i++) {
-//         const bundleLevel = i;
-//         const bundleLineLevel = [...fileInfo[bundleLevel].split("-")[0].matchAll(" ")].length;
-
-//         if (bundleLevel >= fileInfo.length - 1) {
-//             return bundleSizes;
-//         }
-
-//         let nextLineLevel = [...fileInfo[bundleLevel + 1].split("-")[0].matchAll(" ")].length;
-
-//         let nextLevel = bundleLevel + 1;
-//         let bundleSize = 0;
-//         while (nextLineLevel > bundleLineLevel && nextLevel < fileInfo.length) {
-//             // console.log(`${fileInfo[bundleLevel]} has ${fileInfo[nextLevel]}`);
-//             if (fileInfo[nextLevel].includes("file") && fileInfo[bundleLevel].includes("dir")) {
-//                 bundleSize += getFileSize(fileInfo[nextLevel]);
-//             }
-//             nextLineLevel = [...fileInfo[++nextLevel].split("-")[0].matchAll(" ")].length;
-//         }
-
-//         if (bundleSize <= 100000) {
-//             bundleSizes.push(bundleSize);
-//         }
-//     }
-// }
-
 function walkDirs(input) {
     const dirSizes = { "/": 0 };
     let dirStack = [];
